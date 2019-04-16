@@ -1,0 +1,223 @@
+GIT
+====
+    提交
+    ====
+        git commit    # git会调用vim来让你输入信息，适合较多信息输入的场合
+        git commit -a 指的是把当前工作目录中没有被git add添加的文件也提交到本地仓库，不推荐这个选项，应该先git add -A在git commit [-m]
+
+    分支
+    ====
+        git checkout -b <新的branch>  # 创建一个新的分支，然后立马切过去
+
+    合并
+    ====
+        git merge -e --no-ff   # -e 合并后可以先看一下改了哪些再提交；--no-ff 不使用fast-forward合并策略，虽然git默认使用这种策略，但是
+                               # 不推荐，应为这种策略合并后不会创建新的节点
+
+    删除未被跟踪的文件，delete untracked files
+    ==========================================
+        # 删除 untracked files
+        git clean -f
+
+        # 连 untracked 的目录也一起删掉
+        git clean -fd
+
+        # 连 gitignore 的untrack 文件/目录也一起删掉 （慎用，一般这个是用来删掉编译出来的 .o之类的文件用的）
+        git clean -xfd
+
+        # 在用上述 git clean 前，墙裂建议加上 -n 参数来先看看会删掉哪些文件，防止重要文件被误删
+        git clean -nxfd
+        git clean -nf
+        git clean -nfd
+
+
+
+正则表达式
+==========
+    正则表达式 [^a]  指的是匹配非a的字符串，[^abc] 匹配的是非a且非b且非c的字符串，val\s*=[^=] 匹配的是val=后面不是=的字符串
+
+    正则表达式的一些例子：
+    =====================
+        (typedef|#define).*uint8_t          ---  typedef或者#define的后面跟上uint8_t
+        (?<=#define\s*VERSION\s*)\".*\"     ---  匹配#define VERSION "128-v173"中的"128-v173"
+
+SHELL脚本
+=========
+    读取二进制文件
+    ===============
+        od -t xC -w<列数> <文件名>
+
+            -t      指定格式
+            x       16进制格式
+            C       字节格式
+            -w      一行显示几列
+
+        od --traditional -d
+
+            --traditional       以传统方式接受参数(od可以以好几种方式接受参数)
+            -d                  每两个字节组成一个十进制数
+
+    文本替换命令
+    ============
+        sed -i 's/idata//g' Mifare.c   # 把Mifare.c中的idata全部去掉
+
+        # find命令
+        find . ! -name 'port.h'   # 查找不是port.h的文件
+        find . -regex ".*dat"     # 查找当前目录下的所有.dat文件，注意使用-regex(正则表达式)以后，匹配的不只是文件名
+                                    而是绝对路径
+        find . \( ! -name "*.dat" \) -a \( ! -name "*.sh" \)    # 当前目录找不是.dat也不是.sh文件的文件
+
+    shell的延时
+    ===========
+        sleep : 默认为秒。
+        sleep 1s 表示延迟一秒
+        sleep 1m 表示延迟一分钟
+        sleep 1h 表示延迟一小时
+        sleep 1d 表示延迟一天
+
+        usleep表示微秒
+
+    date命令
+    ========
+        tm=`date --date="1 hour ago" +%Y%m%d%H%M`       # 获取当前时间的一小时以前的时间
+        echo $tm
+
+        tm=`date --date="20181009 1045 1 hour ago" +%Y%m%d%H%M`     # 获取指定时间一小时以前的时间
+        echo $tm
+        
+    把字符串写入文件
+    ================
+        如果字符串只有一行
+        ==================
+            这不难
+            
+                echo "111 222" > a.txt
+            或者这样：
+                for line in "111 222"
+                do
+                    echo $line >> a.txt
+                done
+                
+        如果字符串有多行
+        ================
+            这个知识点很隐蔽，因为刚学这个的人肯定会以为可以像处理单行字符串那样，不行的。
+            
+            
+            
+            
+
+
+文本编辑命令
+============
+    awk -F" " '{print NF}' read.txt
+
+        -F" "                指定分隔符是空格
+        '{print NF}'         打印每一行的列数
+        cat yy.txt | awk '{printf "%-30s%-15s\n",$1,$2}' > yy2.txt
+                             把yy.txt中的第一第二列按固定的缩进打印并输出到yy2.txt
+                             # %-30s表示输出字符串,宽度30位,左对齐.%-15s用来指定第二列的,左
+                             # 对齐,宽度15.两个百分号之间可以没有空格.使用\n对每一行的输出加上换行符
+                             # 如果要表示第10列及以上，用$(10),$(11)...
+
+C语言
+===================
+
+    库函数获取毫秒
+    ==============
+        #include <stdio.h>
+        #include <sys/timeb.h>
+
+        long long getSystemTime() {
+            struct timeb t;
+            ftime(&t);
+            return 1000 * t.time + t.millitm;
+        }
+
+        int main() {
+            long long start=getSystemTime();
+            sleep(5);
+            long long end=getSystemTime();
+
+            printf("time: %lld ms\n", end-start);
+            return 0;
+        }
+
+    库函数延时函数
+    ===================
+        sleep()         秒延时
+        usleep()        微秒延时
+
+
+    编程坑点
+    =========
+        * 不要取局部变量的地址，因为当你使用局部变量的地址引用局部变量时，局部变量可能早就被释放了，所以
+          如果非要，记得局部变量加volatile
+
+
+PYTHON
+======
+
+    编程例子：
+    =========
+        打印字母A到Z：
+            for i in range(ord('A'), ord('Z')):
+                print(chr(i))
+
+
+emWin
+=======
+    MESSAGEBOX_Create, GUI_MessageBox都是创建消息框函数，区别是前者能重写回调函数(但是回调函数只接
+    受WM_PAINT这一个消息)，后者不能
+
+
+
+STM32HAL库
+==========
+
+    怎样初始化一个外设
+    ==================
+        以串口3为例：
+        1. 定义一个串口3的全局句柄USART_HandleTypeDef xxx，后续所有的操作都要用到它
+        2. stm32f7xx_hal_msp.c文件的HAL_USART_MspDeInit函数添加串口3的默认初始化函数，一般是关时钟，中断和GPIO默认初始化
+        3. stm32f7xx_hal_msp.c文件的HAL_USART_MspInit函数添加串口3外围的初始化函数，包括串口3的时钟和相应的GPIO时钟使能，
+           GPIO初始化，串口3的中断初始化
+        4. main.c或者其他哪个文件都行，写一个串口3真正的初始化函数，包括波特率，校验位那些
+
+    怎样使用一个中断
+    ================
+        以串口3为例：
+        1. stm32f7xx_it.c文件添加USART3_IRQHandler函数
+        2. 重写HAL_UART_XXXtCallback函数
+        3. 使用HAL_UART_Receive_IT函数注册中断接收数组
+        4. 别忘了在HAL_UART_MspInit中使能串口中断
+
+    其他
+    ====
+        HAL库的头文件只需一个#include "stm32f7xx_hal.h"即可
+
+
+Keil MDK
+========
+
+    优化选项
+    ========
+        当前MDK(5.26)共有4个优化选项：O0, O1, O2, O3，千万别用O0，有问题的
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

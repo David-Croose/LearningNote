@@ -8,6 +8,7 @@ GIT
     分支
     ====
         git checkout -b <新的branch>  # 创建一个新的分支，然后立马切过去
+        git branch -d <要删除的分支名字>        # 删除分支
 
     合并
     ====

@@ -32,6 +32,10 @@ GIT
         git clean -nf
         git clean -nfd
 
+    推送
+    ===
+        git push origin master      # 推送本地的master分支
+        git push origin --tags      # 推送本地的所有标签
 
 
 正则表达式

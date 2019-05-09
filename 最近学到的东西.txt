@@ -213,6 +213,22 @@ Keil MDK
     优化选项
     ========
         当前MDK(5.26)共有4个优化选项：O0, O1, O2, O3，千万别用O0，有问题的
+        
+    怎样重定向printf
+    ===============
+        1. 添加段代码
+        ============
+            #include <stdio.h>
+            int fputc(int ch, FILE *f)
+            {
+                uint8_t temp[1] = {ch};
+                HAL_UART_Transmit(&huart1, temp, 1, 2);
+                return(ch);
+            }
+            
+        2. USE Micro Lib
+        ================
+            具体略
 
 
 

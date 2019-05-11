@@ -37,6 +37,10 @@ GIT
         # 比如.cproject这个文件已经加入版本跟踪系统了，你想把它从版本跟踪系统中移除，但仍然让它留在文件系统中
         git rm -nr --cached .cproject
 
+    查看版本库中的所有文件
+    ====================
+        git ls-tree <分支名> --name-only
+
     推送
     ===
         git push origin master      # 推送本地的master分支

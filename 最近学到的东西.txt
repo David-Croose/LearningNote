@@ -5,6 +5,41 @@ GIT
         git commit    # git会调用vim来让你输入信息，适合较多信息输入的场合
         git commit -a 指的是把当前工作目录中没有被git add添加的文件也提交到本地仓库，不推荐这个选项，应该先git add -A在git commit [-m]
 
+        删除指定提交
+        ===========
+            假设你有c1~c5五个提交，你要删除c5这个提交
+
+            git log --oneline
+                eb6a3dd (HEAD -> master) c5
+                234ad32 c4
+                269f234 c3
+                bad34cd c2
+                245cf8c c1
+
+            git rebase -i <245cf8c>   # git要指定一个起点的，这里以c1为起点，你也可以以其它为起点
+                # 此时弹出vim编辑器，内容大致是：开头几行字描述着各个提交该保留还是删除，下面的字讲的是所有可用的操作是什么意思
+                pick bad34cd c2
+                pick 269f234 c3
+                pick 234ad32 c4
+                pick eb6a3dd c5
+
+                # balabalabalabalabalabalabalabala
+                # balabalabalabalabalabalabalabala
+                # balabalabalabalabalabalabalabala
+
+            # 你想删除c5提交，只需把c5前面的pick改成drop即可。更改之后如下：
+                pick bad34cd c2
+                pick 269f234 c3
+                pick 234ad32 c4
+                drop eb6a3dd c5
+
+                # balabalabalabalabalabalabalabala
+                # balabalabalabalabalabalabalabala
+                # balabalabalabalabalabalabalabala
+
+            # vim保存退出即可
+
+
     分支
     ====
         git checkout -b <新的branch>  # 创建一个新的分支，然后立马切过去
@@ -100,29 +135,29 @@ SHELL脚本
 
         tm=`date --date="20181009 1045 1 hour ago" +%Y%m%d%H%M`     # 获取指定时间一小时以前的时间
         echo $tm
-        
+
     把字符串写入文件
     ================
         如果字符串只有一行
         ==================
             这不难
-            
+
                 echo "111 222" > a.txt
             或者这样：
                 for line in "111 222"
                 do
                     echo $line >> a.txt
                 done
-                
+
         如果字符串有多行
         ================
             这个知识点很隐蔽，因为刚学这个的人肯定会以为可以像处理单行字符串那样，不行的。
-            
+
     字符串去重
     =========
         sort -u     # 去除重复只保留一个然后排序
         uniq        # 只去除连续的重复
-        
+
         引申
         ====
             ls -R | grep -oE '\.[0-9a-zA-Z_\.]+$' | sort -u     # 列出一个目录下的所有文件类型
@@ -223,7 +258,7 @@ Keil MDK
     优化选项
     ========
         当前MDK(5.26)共有4个优化选项：O0, O1, O2, O3，千万别用O0，有问题的
-        
+
     怎样重定向printf
     ===============
         1. 添加段代码
@@ -235,26 +270,10 @@ Keil MDK
                 HAL_UART_Transmit(&huart1, temp, 1, 2);
                 return(ch);
             }
-            
+
         2. USE Micro Lib
         ================
             具体略
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

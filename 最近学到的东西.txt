@@ -276,4 +276,53 @@ Keil MDK
             具体略
 
 
+GCC
+====
+
+    链接
+    ====
+        把一个变量放到指定的段内
+        =========================
+            __attribute__((section("name")))        # name即是你要指定的段，名字随便取，可以带'.'号
+
+            例如：
+                int david __attribute__((section(".user.char.1"))) = 0x123;  # 把david这个变量放到".user.char.1"段中
+
+        利用链接脚本导出符号
+        ====================
+            在C语言里面，你若想导出一个符号，必然要用extern。但是GCC的链接脚本允许你不用那种方法：
+
+                # 链接脚本中定义好".user.char.1"段
+                SECTIONS
+                {
+                    .text :
+                    {
+                        ...
+                        *(.user.char.1)
+                        ...
+                    }
+                }
+
+                # C工程中定义一个位于".user.char.1"段的变量
+                int david __attribute__((section(".user.char.1"))) = 0x123;
+
+                # 此时david这个变量就变成全局变量了，你可以在工程的任意一个位置访问它而不需要extern。
+
+                # 实际上，你还可以把链接脚本改成这样：
+                SECTIONS
+                {
+                    .text :
+                    {
+                        ...
+                        user_start = .;
+                        *(.user.char.1)
+                        *(.user.char.2)
+                        *(.user.char.3)
+                        *(.user.char.4)
+                        user_end = .;
+                        ...
+                    }
+                }
+                # 这种情况适用于当你的自定义段很多的时候，你可以通过获取user_start和user_end的地
+                # 址(即&user_start, &user_end)来访问到这个“数组”。Linux内核里面有大量应用
 

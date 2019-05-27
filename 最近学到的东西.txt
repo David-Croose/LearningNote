@@ -334,3 +334,7 @@ GCC
                 # 这种情况适用于当你的自定义段很多的时候，你可以通过获取user_start和user_end的地
                 # 址(即&user_start, &user_end)来访问到这个“数组”。Linux内核里面有大量应用
 
+GDB
+===
+    x/32xb buf   # 查看buf内存
+    info locals  # 查看局部变量

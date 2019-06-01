@@ -372,4 +372,18 @@ ubuntu，树莓派
     =============================
         ip neigh
 
+    搭建ftp服务器
+    ============
+        ubuntu:
+            sudo apt-get install vsftpd
+            sudo service vsftpd restart
+
+        windows:
+            ftp://<ubuntu的IP地址>
+            账号：pi
+            密码：<pi>的密码
+    
+        结果：
+            ubuntu的/目录共享到了windows上，不过有些目录可以访问有些不可以。有关vsftp的所有配置都在/etc/vsftpd.conf文件中
+            你可以用man vsftpd或者man vsftpd.conf获取帮助
 

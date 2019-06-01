@@ -376,14 +376,17 @@ ubuntu，树莓派
     ============
         ubuntu:
             sudo apt-get install vsftpd
+            sudo vim /etc/vsftpd.conf
+                把#write_enable=YES改成write_enable=YES
+                保存退出
             sudo service vsftpd restart
 
         windows:
-            ftp://<ubuntu的IP地址>
+            ftp://<ubuntu的IP地址>  # 例如ftp://192.168.43.254
             账号：pi
             密码：<pi>的密码
     
         结果：
-            ubuntu的/目录共享到了windows上，不过有些目录可以访问有些不可以。有关vsftp的所有配置都在/etc/vsftpd.conf文件中
+            ubuntu的/home/pi目录共享到了windows上。有关vsftp的所有配置都在/etc/vsftpd.conf文件中
             你可以用man vsftpd或者man vsftpd.conf获取帮助
 

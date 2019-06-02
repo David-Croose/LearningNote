@@ -411,7 +411,7 @@ ubuntu，树莓派，安卓
             # 在文件的最底部添加这段代码，"="两边可以带空格
                 [qin]                   # "qin"你可以换成自己的名字，随便取
                     path = /share       # 共享目录
-                    valid users = sam   # 有效用户。这个用户跟ubuntu系统里的用户无关，它是samba自己的用户
+                    valid users = sam   # 有效用户。这个用户必须是ubuntu真实存在的用户，你可能需要user add sam
                     browseable = yes
                     public = yes
                     writable = yes
@@ -420,7 +420,7 @@ ubuntu，树莓派，安卓
             sudo service smbd restart   # 当然用sudo systemctl restart smbd或者sudo /etc/init.d/smbd restart也可以
 
         windows:
-            文件管理器找到"网络>>UBUNTU>>qin"即可
+            文件管理器找到"网络>>UBUNTU>>qin"，输入账号sam以及他的密码即可
 
     搭建nfs服务器
     ============

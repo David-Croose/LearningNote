@@ -379,7 +379,7 @@ ubuntu，树莓派
             sudo vim /etc/vsftpd.conf
                 把#write_enable=YES改成write_enable=YES
                 保存退出
-            sudo service vsftpd restart
+            sudo service vsftpd restart     # 当然用sudo systemctl restart vsftpd或者sudo /etc/init.d/vsftpd restart也可以
 
         windows:
             ftp://<ubuntu的IP地址>  # 例如ftp://192.168.43.254
@@ -405,9 +405,25 @@ ubuntu，树莓派
                     writable = yes
                 保存退出
             sudo smbpasswd -a sam       # 往samba中添加用户sam，系统会提示输入密码
-            sudo service smbd restart
+            sudo service smbd restart   # 当然用sudo systemctl restart smbd或者sudo /etc/init.d/smbd restart也可以
 
         windows:
             文件管理器找到"网络>>UBUNTU>>qin"即可
+
+    搭建nfs服务器
+    ============
+        ubuntu:
+            sudo apt-get install nfs-kernel-server      # 这步你可能并不需要，因为很多Linux发行版都是自带nfs的。你可以先看看/etc/export是否存在，如果存在则说明安装了
+            sudo vim /etc/exports
+                末尾添加这个
+                /home/pi    *(rw)     # "/home/pi"是你要共享出去的路径；"*"指的是任何网段的主机都可以访问你的nfs；"(rw)"指的是别人可读可写
+                保存退出
+            sudo systemctl restart nfs-kernel-server.service    # 当然你用sudo service <服务名> restart或者sudo /etc/init.d/<服务名> restart也可以
+
+        windows:
+            控制面板--->程序--->打开或关闭Windows功能。把NFS服务子项全部勾选，"基于UNIX的应用程序子系统"勾选
+            cmd窗口输入：mount \\192.168.43.254\home\pi x:
+            打开文件浏览器，你可以看到ubuntu的nfs挂载上来了，但是是只读的，尽管你的ubuntu已经规定可写了，网上有解决办法，但是我试了不成功
+            如果卸载挂载，cmd窗口输入：umount x:
 
 

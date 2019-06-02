@@ -409,15 +409,15 @@ ubuntu，树莓派，安卓
             sudo apt-get install samba samba-common-bin
             sudo vim /etc/samba/smb.conf
             # 在文件的最底部添加这段代码。注意"="两边可以带空格
-                [qin]                   # "qin"你可以换成自己的名字，随便取
-                    path = /share       # 共享目录
+                [pi]                    # "pi"你可以换成自己的名字
+                    path = /home/pi     # 共享目录
                     writable = yes
                 保存退出
-            sudo smbpasswd -a sam       # 往samba中添加用户sam，系统会提示输入密码。注意这个用户必须是ubuntu真实存在的用户，你可能需要user add sam
+            sudo smbpasswd -a pi        # 往samba中添加用户pi，系统会提示输入密码。注意这个用户必须是ubuntu真实存在的用户，你可能需要user add sam
             sudo service smbd restart   # 当然用sudo systemctl restart smbd或者sudo /etc/init.d/smbd restart也可以
 
         windows:
-            文件管理器找到"网络>>UBUNTU>>qin"，输入账号sam以及他的密码即可
+            文件管理器找到"网络>>RASPBERRYPI>>pi"，输入账号sam以及他的密码即可
 
     搭建nfs服务器
     ============

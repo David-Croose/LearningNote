@@ -352,7 +352,7 @@ GDB
 
 
 
-ubuntu，树莓派
+ubuntu，树莓派，安卓
 ==============
 
     su失败的解决办法
@@ -364,10 +364,22 @@ ubuntu，树莓派
 
         解决办法：
             sudo su
+            
+            
+    树莓派改软件源
+    =============
+        sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+        sudo vi /etc/apt/sources.list
+            把以前的都删掉，加入deb http://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib non-free rpi
+            保存退出
+        sudo cp /etc/apt/sources.list.d/raspi.list /etc/apt/sources.list.d/raspi.list.bak
+        sudo vi /etc/apt/sources.list.d/raspi.list
+            把以前都删了，加入deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main ui
+            保存退出
+        sudo su
+        apt-get update && apt-get upgrade
 
 
-安卓，Linux
-===========
     查看有哪些设备连入了本设备的热点
     =============================
         ip neigh

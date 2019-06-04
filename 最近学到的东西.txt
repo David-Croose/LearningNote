@@ -418,7 +418,7 @@ ubuntu，树莓派，安卓
             sudo service smbd restart   # 当然用sudo systemctl restart smbd或者sudo /etc/init.d/smbd restart也可以
 
         windows:
-            文件管理器找到"网络>>RASPBERRYPI>>pi"，输入账号sam以及他的密码即可
+            文件管理器找到"网络>>RASPBERRYPI>>pi"，输入账号pi以及他的密码即可
 
     搭建nfs服务器
     ============

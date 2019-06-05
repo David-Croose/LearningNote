@@ -47,6 +47,7 @@ GIT
         git checkout -b <新的branch>  # 创建一个新的分支，然后立马切过去
         git branch -d <要删除的分支名字>        # 删除本地分支
         git push origin --delete <要删除的分支名字>     # 删除远程分支。注意：<要删除的分支名字> 是直接写名字的，比如remotes/origin/bugfix这个分支你只要写bugfix就行了
+        git branch -f <分支名> <SHA1>      # 强制移动一个分支到一个提交
 
     合并
     ====

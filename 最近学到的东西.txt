@@ -410,12 +410,12 @@ ubuntu，树莓派，安卓
             sudo apt-get update
             sudo apt-get install samba samba-common-bin
             sudo vim /etc/samba/smb.conf
-            # 在文件的最底部添加这段代码。注意"="两边可以带空格
+            # 在文件的最底部添加这段代码。注意"="两边可以带空格；好像不可以用tab来当空格
                 [pi]                    # "pi"你可以换成自己的名字
                     path = /home/pi     # 共享目录
                     writable = yes
                 保存退出
-            sudo smbpasswd -a pi        # 往samba中添加用户pi，系统会提示输入密码。注意这个用户必须是ubuntu真实存在的用户，你可能需要user add sam
+            sudo smbpasswd -a pi        # 往samba中添加用户pi，系统会提示输入密码。注意这个用户必须是ubuntu真实存在的用户，你可能需要user add pi
             sudo service smbd restart   # 当然用sudo systemctl restart smbd或者sudo /etc/init.d/smbd restart也可以
 
         windows:

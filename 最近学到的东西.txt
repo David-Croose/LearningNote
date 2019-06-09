@@ -423,7 +423,7 @@ ubuntu，树莓派，安卓
 
     搭建nfs服务器
     ============
-        Windows挂载nfs非常卡，不建议使用
+        Windows挂载nfs非常卡，还不支持中文，不建议使用
 
         ubuntu:
             sudo apt-get install nfs-kernel-server      # 这步你可能并不需要，因为很多Linux发行版都是自带nfs的。你可以先看看/etc/export是否存在，如果存在则说明安装了

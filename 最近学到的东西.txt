@@ -366,8 +366,14 @@ ubuntu，树莓派，安卓
 
         解决办法：
             sudo su
-            
-            
+
+    开启SSH服务
+    ==========
+        ubuntu默认是不使能SSH的，你得自己安装配置（树莓派是安装了SSH的，只是没有使能）
+
+        sudo apt-get install openssh-server
+        sudo systemctl restart ssh
+
     树莓派改软件源
     =============
         sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
@@ -379,6 +385,13 @@ ubuntu，树莓派，安卓
             把以前都删了，加入deb http://mirrors.ustc.edu.cn/archive.raspberrypi.org/debian/ stretch main ui
             保存退出
         sudo su
+        apt-get update && apt-get upgrade
+        
+    ubuntu改软件源
+    =============
+        sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+        sudo echo > /etc/apt/sources.list       # 清空原本的配置文件
+        去中科大的官网下载一个sources.list文件（可以输入"ubuntu"查找），复制里面的内容到/etc/apt/sources.list就行了
         apt-get update && apt-get upgrade
 
 

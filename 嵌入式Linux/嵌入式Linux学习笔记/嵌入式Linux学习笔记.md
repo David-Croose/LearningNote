@@ -31,8 +31,8 @@ Windows用的软件是HaneWIN
 [https://www.hanewin.net/nfs-e.htm](http://)
 
 打开它
-![HaneWIN.png](.\HaneWIN.png)
-![HaneWIN2.png](.\HaneWIN2.png)
+![HaneWIN.png](./HaneWIN.png)
+![HaneWIN2.png](./HaneWIN2.png)
 Linux挂载
 `mount -t nfs -o nolock 192.168.1.11:/c/Users/hasee/Desktop /mnt/`
 

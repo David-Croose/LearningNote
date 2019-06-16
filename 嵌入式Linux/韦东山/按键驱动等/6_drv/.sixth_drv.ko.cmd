@@ -1,0 +1,1 @@
+cmd_/work/drivers_and_test/sixth_drv/sixth_drv.ko := arm-linux-ld -EL  -r -o /work/drivers_and_test/sixth_drv/sixth_drv.ko /work/drivers_and_test/sixth_drv/sixth_drv.o /work/drivers_and_test/sixth_drv/sixth_drv.mod.o

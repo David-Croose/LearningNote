@@ -1,0 +1,1 @@
+cmd_/work/drivers_and_test/forth_drv/forth_drv.ko := arm-linux-ld -EL  -r -o /work/drivers_and_test/forth_drv/forth_drv.ko /work/drivers_and_test/forth_drv/forth_drv.o /work/drivers_and_test/forth_drv/forth_drv.mod.o

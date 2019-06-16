@@ -32,14 +32,19 @@ Windows用的软件是HaneWIN
 
 打开它
 ![HaneWIN.png](./HaneWIN.png)
+
 ![HaneWIN2.png](./HaneWIN2.png)
+
 Linux挂载
 `mount -t nfs -o nolock 192.168.1.11:/c/Users/hasee/Desktop /mnt/`
 
 ## Linux命令
 `cat /dev/tty1`
+
 `hexdump /dev/event1`         # open(dev/event1)  秒 微妙 类 code value
+
 `exec 0</dev/tty1`            # 把tty设为标准输入
+
 `ls -l /proc/770/fd`          # 查看770这个进程打开了哪些文件
 
 

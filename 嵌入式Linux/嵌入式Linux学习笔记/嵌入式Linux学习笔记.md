@@ -1,6 +1,6 @@
 ## 编译内核
 1. `cp arch/arm/config/${Your Board}_defconfig .config`
-2. `make ARCH=arm menuconfig` 
+2. `make ARCH=arm menuconfig`
 menuconfig会进一步完善.config文件
 3. `make ARCH=arm CROSS_COMPILE=${Your Cross Compile Prefix)- uImage `
 e.g. make ARCH=arm CROSS_COMPILE=arm-linux- uImage
@@ -40,11 +40,8 @@ Linux挂载
 
 ## Linux命令
 `cat /dev/tty1`
-
 `hexdump /dev/event1`         # open(dev/event1)  秒 微妙 类 code value
-
 `exec 0</dev/tty1`            # 把tty设为标准输入
-
 `ls -l /proc/770/fd`          # 查看770这个进程打开了哪些文件
 
 

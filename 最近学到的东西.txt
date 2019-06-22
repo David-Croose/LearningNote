@@ -228,6 +228,8 @@ C语言
         * 小心死锁问题，死锁也能导致死机，发生原因一般是嵌套锁
         * 建议加看门狗
         * 测试代码的时候要记录栈使用情况，防止栈溢出
+        * 小心C语言的宏定义，比如这个：#define SET_MODE(hd, mode)     led_handles[(hd)].mode = (mode)
+          当你这样调用时：SET_MODE(1, sta)，展开成了led_handles[(hd)].sta = sta，你本想改变mode成员，结果改到sta成员去了
 
 
 

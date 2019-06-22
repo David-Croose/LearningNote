@@ -8,6 +8,7 @@ e.g. make ARCH=arm CROSS_COMPILE=arm-linux- uImage
 **可能会遇到的问题**
 ```
 scripts/kconfig/lxdialog/dialog.h:32:20: fatal error: curses.h: No such file or directory
+
 这是因为你没有libncurse库，输入sudo apt-get install libncurses5-dev libncursesw5-dev安装即可
 ```
 ```
@@ -26,7 +27,7 @@ config %config: scripts_basic outputmakefile FORCE
 %/: prepare scripts FORCE
 ```
 
-## Linux开发板挂载NFS
+## Linux挂载NFS
 Windows用的软件是HaneWIN
 
 [https://www.hanewin.net/nfs-e.htm](http://)
@@ -41,7 +42,9 @@ Linux挂载
 
 `mount -t nfs -o nolock 192.168.1.11:/c/Users/hasee/Desktop /mnt/`
 
-## Linux命令
+*注意：如果Linux开发板挂载不上Windows的这个软件的NFS服务器，那就用Linux做NFS服务器吧*
+
+## 各种Linux命令
 `cat /dev/tty1`
 
 `hexdump /dev/event1`         # open(dev/event1)  秒 微妙 类 code value

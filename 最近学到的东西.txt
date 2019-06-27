@@ -279,7 +279,8 @@ STM32HAL库
 
     其他
     ====
-        HAL库的头文件只需一个#include "stm32f7xx_hal.h"即可
+        * HAL库的头文件只需一个#include "stm32f7xx_hal.h"即可
+        * 小心DMA，例如你在一个DMA传输函数执行结束后读取内存，这个内存可能仍被DMA控制
 
 
 Keil MDK

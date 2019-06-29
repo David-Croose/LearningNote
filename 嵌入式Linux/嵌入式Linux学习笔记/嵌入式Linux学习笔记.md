@@ -27,6 +27,13 @@ config %config: scripts_basic outputmakefile FORCE
 %/: prepare scripts FORCE
 ```
 
+```
+内核编译成功，但没有生成uImage
+
+uImage是用u-boot工具生成的，内核本身并不能生成，安装u-boot工具即可
+apt-get install u-boot-tools
+```
+
 ## Linux挂载NFS
 Windows用的软件是HaneWIN
 

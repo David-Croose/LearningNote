@@ -51,6 +51,20 @@ Linux挂载
 
 *注意：如果Linux开发板挂载不上Windows的这个软件的NFS服务器，那就用Linux做NFS服务器吧*
 
+## 安装交叉编译器
+```
+tar xjf arm-linux-gcc-3.4.5-glibc-2.3.6.tar.bz2
+sudo vim /etc/profile
+	最后一行添加：
+		export PATH=$PATH:/home/sam/Work/SoftWare/arm-linux-gcc-3.4.5/gcc-3.4.5-glibc-2.3.6/bin
+	保存退出
+. /etc/profile		# 注意"."和"/"之间有个空格
+
+可能遇到的问题：
+* -bash: ./arm-linux-gcc: No such file or directory
+	解决：安装32位兼容库：sudo apt-get install lib32ncurses5 lib32z1
+```
+
 ## 各种Linux命令
 `cat /dev/tty1`
 

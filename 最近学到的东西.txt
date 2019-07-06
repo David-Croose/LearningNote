@@ -402,7 +402,8 @@ ubuntu，树莓派，安卓
         sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
         sudo echo > /etc/apt/sources.list       # 清空原本的配置文件
         去中科大的官网下载一个sources.list文件（可以输入"ubuntu"查找），复制里面的内容到/etc/apt/sources.list就行了
-        apt-get update && apt-get upgrade
+        sudo apt-get update
+        sudo apt-get upgrade
 
 
     查看有哪些设备连入了本设备的热点

@@ -393,6 +393,10 @@ ubuntu，树莓派，安卓
 
         sudo apt-get install openssh-server
         sudo systemctl restart ssh
+        
+        其他：
+            当你用ssh登录的时候会发现终端变成黑白的，那是因为ubuntu默认就是关闭ssh的彩色显示的。这时你可以编辑~/.bashrc文件，把force_color_prompt赋值yes即可
+
 
     树莓派改软件源
     =============

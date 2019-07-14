@@ -91,6 +91,7 @@ GIT
         git push origin master      # 推送本地的master分支
         git push origin bugfix:bugfix  # 推送本地的bugfix分支(冒号前面)到远程的bugfix分支(冒号后面)，如果远程不存在bugfix分支会自动创建
         git push origin --tags      # 推送本地的所有标签
+        git push origin --all       # 推送本地的所有分支
         git push -u origin develop  # 在远程创建一个新分支develop
 
 
@@ -102,9 +103,14 @@ GIT
     =====================
         (typedef|#define).*uint8_t          ---  typedef或者#define的后面跟上uint8_t
         (?<=#define\s*VERSION\s*)\".*\"     ---  匹配#define VERSION "128-v173"中的"128-v173"
+        aaa\s*=[^=\r\n]*                    ---  匹配aaa后面带"="而不是"=="的字符串，也就是aaa这个变量的赋值语句
 
 SHELL脚本
 =========
+    写入二进制数据到文件
+    ==================
+        echo -e "\x01\x02" > 111.bin
+
     读取二进制文件
     ===============
         od -t xC -w<列数> <文件名>
@@ -193,6 +199,10 @@ SHELL脚本
                                  # %-30s表示输出字符串,宽度30位,左对齐.%-15s用来指定第二列的,左
                                  # 对齐,宽度15.两个百分号之间可以没有空格.使用\n对每一行的输出加上换行符
                                  # 如果要表示第10列及以上，用$(10),$(11)...
+
+    清空一个文件
+    ===========
+        cat /dev/null > dat.bin
 
 C语言
 ===================
@@ -383,6 +393,10 @@ ubuntu，树莓派，安卓
 
         sudo apt-get install openssh-server
         sudo systemctl restart ssh
+        
+        其他：
+            当你用ssh登录的时候会发现终端变成黑白的，那是因为ubuntu默认就是关闭ssh的彩色显示的。这时你可以编辑~/.bashrc文件，把force_color_prompt赋值yes即可
+
 
     树莓派改软件源
     =============

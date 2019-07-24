@@ -83,6 +83,21 @@ sudo vim /etc/profile
 	解决：安装32位兼容库：sudo apt-get install lib32ncurses5 lib32z1
 ```
 
+## 各种奇怪问题解决
+```
+问题：libtoolize: not found
+解决：安装autoconf。sudo apt-get install autoconf
+```
+
+```
+问题：
+	有时编译软件还是会遇到各种不明白的问题
+
+不保证可以解决：
+	sudo apt-get install autogen
+	sudo apt-get install libtool
+```
+
 ## 各种Linux命令
 `cat /dev/tty1`
 

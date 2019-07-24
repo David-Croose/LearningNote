@@ -34,6 +34,24 @@ uImage是用u-boot工具生成的，内核本身并不能生成，安装u-boot�
 apt-get install u-boot-tools
 ```
 
+```
+/bin/sh: 1: bison: not found
+
+sudo apt-get install bison
+```
+
+```
+/bin/sh: 1: flex: not found
+
+sudo apt-get install flex
+```
+
+```
+scripts/extract-cert.c:21:25: fatal error: openssl/bio.h
+
+sudo apt-get install libssl-dev
+```
+
 ## Linux挂载NFS
 Windows用的软件是HaneWIN
 

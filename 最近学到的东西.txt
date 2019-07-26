@@ -94,6 +94,10 @@ GIT
         git push origin --all       # 推送本地的所有分支
         git push -u origin develop  # 在远程创建一个新分支develop
 
+    其他
+    ====
+        git config --global core.editor "vim"      # 把默认的编辑器改为vim
+
 
 正则表达式
 ==========

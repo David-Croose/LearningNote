@@ -54,6 +54,32 @@ GIT
         git merge -e --no-ff   # -e 合并后可以先看一下改了哪些再提交；--no-ff 不使用fast-forward合并策略，虽然git默认使用这种策略，但是
                                # 不推荐，应为这种策略合并后不会创建新的节点
 
+        合并一个分支上的某个文件
+        ======================
+            有时候你只想合并一个分支上的某个文件到主线上来。
+            注意这个命令并不是真的合并，它只是把合并来的内容写到worktree里面！！！
+
+            git checkeout master                # 先切到主线分支
+            git checkout -p deve ccc.txt        # "deve ccc.txt"指的是你想合并deve分支上的ccc.txt文件
+            
+            # 然后就会出现类似下面这种提示，你可以选择要不要合并
+            # 我在这里输入了个"?"让它打印出y,n,q,a,d,e的意思，一般就用y和n就够了
+                --- b/ccc.txt
+                +++ a/ccc.txt
+                @@ -1 +1,2 @@
+                 333
+                +333-333-3333
+                Apply this hunk to index and worktree [y,n,q,a,d,e,?]? ?
+                y - apply this hunk to index and worktree
+                n - do not apply this hunk to index and worktree
+                q - quit; do not apply this hunk or any of the remaining ones
+                a - apply this hunk and all later hunks in the file
+                d - do not apply this hunk or any of the later hunks in the file
+                e - manually edit the current hunk
+                ? - print help
+
+
+
     删除未被跟踪的文件，delete untracked files
     ==========================================
         # 删除 untracked files

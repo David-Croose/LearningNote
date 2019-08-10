@@ -424,14 +424,17 @@ ubuntu，树莓派，安卓
 
     树莓派技巧
     ==========
-        用SD卡开启SSH：在SD卡根目录新建一个空文件SSH
-        用SD卡配置WIFI：在SD卡根目录新建wpa_supplicant.conf文件，填入
+        用SD卡开启SSH（仅适用于官方系统）：在SD卡根目录新建一个空文件SSH
+        用SD卡配置WIFI（仅适用于官方系统）：在SD卡根目录新建wpa_supplicant.conf文件，填入
             ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
             network={
               ssid="你的WIFI名"
               psk="WIFI密码"
             }
-        查看Linux是多少位：getconf LONG_BIT
+
+    查看系统是多少位
+    ===============
+        getconf LONG_BIT
 
     su失败的解决办法
     ================

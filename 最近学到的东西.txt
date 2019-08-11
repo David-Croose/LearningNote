@@ -277,6 +277,18 @@ C语言
         sleep()         秒延时
         usleep()        微秒延时
 
+    scanf用法
+    ========
+        #include <stdio.h>
+        void main() {
+            int num, hour, min, sec;
+            printf("num=");
+            scanf("%d", &num);
+            hour = num / 3600;
+            min = num % 3600 / 60;
+            sec = num % 60;
+            printf("%d 小时 %d 分钟 %d 秒\n", hour, min, sec);
+        }
 
     编程坑点
     =========

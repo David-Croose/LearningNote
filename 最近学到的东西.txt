@@ -560,3 +560,13 @@ ubuntu，树莓派，安卓
             如果卸载挂载，cmd窗口输入：umount -a -f
 
 
+eclipse
+========
+    * 在Windows下，当你用eclipse编译c代码时，工具链（gcc，gdb，make等）得自己准备，网上工具链一大把，推荐使用Qt自带的MinGW，别用CodeBlocks的MinGW，虽然它更全，但是在eclipse下不能正常工作。
+    * eclipse在设置工具链时有时不能马上见效，可以删除工程，删除文件系统里的.settings，.project，.cproject文件再重新创建工程
+    
+    
+    
+    
+    
+    

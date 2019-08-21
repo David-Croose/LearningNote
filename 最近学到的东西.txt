@@ -133,7 +133,7 @@ GIT
     =====================
         (typedef|#define).*uint8_t          ---  typedef或者#define的后面跟上uint8_t
         (?<=#define\s*VERSION\s*)\".*\"     ---  匹配#define VERSION "128-v173"中的"128-v173"
-        aaa\s*=[^=\r\n]*                    ---  匹配aaa后面带"="而不是"=="的字符串，也就是aaa这个变量的赋值语句
+        aaa\s*=[^=\r\n]                     ---  匹配aaa后面带"="而不是"=="的字符串，也就是aaa这个变量的赋值语句
 
 SHELL脚本
 =========

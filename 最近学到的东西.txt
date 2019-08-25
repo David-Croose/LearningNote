@@ -315,6 +315,7 @@ C语言
         * 小心C语言的宏定义，比如这个：#define SET_MODE(hd, mode)     led_handles[(hd)].mode = (mode)
           当你这样调用时：SET_MODE(1, sta)，展开成了led_handles[(hd)].sta = sta，你本想改变mode成员，结果改到sta成员去了
         * 拷贝大的全局变量时要注意共享问题
+        * 大坑：把一个局部变量定义成const仍是局部变量，仍是放在栈里面的！！！
 
 
 

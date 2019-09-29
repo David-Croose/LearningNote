@@ -533,6 +533,20 @@ ubuntu，树莓派，安卓
         其他：
             当你用ssh登录的时候会发现终端变成黑白的，那是因为ubuntu默认就是关闭ssh的彩色显示的。这时你可以编辑~/.bashrc文件，把force_color_prompt赋值yes即可
 
+    挂载U盘
+    =======
+        $ cat /proc/partitions
+            major minor  #blocks  name
+            
+               8        0   62522712 sda
+               8        1     524288 sda1
+               8        2   60996608 sda2
+               8        3    1000448 sda3
+               8       16   31326208 sdb    # 这是U盘
+               8       17   31326176 sdb1   # 这是U盘的分区
+        $ sudo mount /dev/sdb1 /mnt
+        $ sudo umount /mnt # 或者 sudo umount /dev/sdb1
+
 
     树莓派改软件源
     =============

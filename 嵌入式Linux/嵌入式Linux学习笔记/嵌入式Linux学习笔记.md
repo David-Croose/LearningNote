@@ -96,6 +96,10 @@ sudo vim /etc/profile
 不保证可以解决：
 	sudo apt-get install autogen
 	sudo apt-get install libtool
+
+问题：
+as: error while loading shared libraries: libz.so.1: cannot open shared object file: No such file or directory
+解决（安装32位兼容库）：sudo apt-get install lib32ncurses5 lib32z1
 ```
 
 ## 各种Linux命令

@@ -1,5 +1,27 @@
 GIT
 ====
+    栈（stash）
+    ===========
+        注意："git stash"仅仅是把工作区和仓库不同的部分压入栈中，已经压栈的代码相当于仓库的代码。例如：
+              $ echo "" > demo.txt
+              $ echo "1" >> demo.txt
+              $ git stash save "V1"
+              $ echo "2" >> demo.txt
+              $ git stash save "V2"
+              此时如果你git stash pop，那么V2这个栈就会恢复，然而demo.txt仅仅是"2"而已，不是"1\n2"
+
+        git stash                   # 把工作区的代码存入栈中
+        git stash save "注释"       # 类似于git stash，但是可是注释
+
+        git stash list              # 列出栈
+        git stash show              # 显示栈中的代码和工作区的区别
+
+        git stash pop               # 把栈中的代码恢复到工作区，并清除栈
+        git stash apply             # 把栈中的代码恢复到工作区，但是不清除栈
+
+        git stash clear             # 清除所有的栈
+        git stash drop + 名称       # 删除一个栈
+
     提交
     ====
         git commit    # git会调用vim来让你输入信息，适合较多信息输入的场合

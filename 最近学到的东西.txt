@@ -1,5 +1,9 @@
 GIT
 ====
+    解决中文乱码
+    ==========
+        git config --global core.quotepath false
+
     栈（stash）
     ===========
         注意："git stash"仅仅是把工作区和仓库不同的部分压入栈中，已经压栈的代码相当于仓库的代码。例如：

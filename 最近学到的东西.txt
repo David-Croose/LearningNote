@@ -1,5 +1,13 @@
 GIT
 ====
+    git fetch
+    ==========
+        # 有时你需要检查当前仓库是否是最新的，但你又不想用git pull，因为你想先看一下远程仓库改了哪些，这时你可以用git fetch
+        git fetch origin master:tmp     # 把远程仓库的master分支复制到本地的tmp分支
+        git diff tmp                    # 查看远程仓库作了哪些改动
+        git pull 或者 git merge tmp     # 合并分支
+        git branch -d tmp               # 删除临时分支
+
     解决中文乱码
     ==========
         git config --global core.quotepath false

@@ -1,5 +1,24 @@
 GIT
 ====
+    补丁
+    ====
+        生成补丁：
+            git diff [旧ID] [新ID] > <xxx.diff>       # 注意[旧ID]和[新ID]别写反了
+            git format-patch <ID> -n -o XXX.patch  # 生成SHA1为ID的提交相较之前n个提交的所有补丁。n如果是1就是相较于相邻的上一个提交；-o指定补丁存放路径
+
+        检查补丁能否打上：
+            git apply --check <XXX.patch 或者 xxx.diff>
+
+        应用补丁：
+            git apply <XXX.patch 或者 xxx.diff>
+            git am <XXX.patch 或者 xxx.diff>
+
+        注意：
+            * 关于组合问题：
+                * git apply一般对应于git diff。这个比较简单，就跟unix的diff差不多，它会把补丁中的内容应用到工作区但不提交，你得手动提交
+                * git format-patch一般对应于git am。这两个操作会把提交信息一并打入，比git diff + git apply更加智能
+                * 其他组合我没试过
+
     git fetch
     ==========
         # 有时你需要检查当前仓库是否是最新的，但你又不想用git pull，因为你想先看一下远程仓库改了哪些，这时你可以用git fetch

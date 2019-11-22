@@ -190,6 +190,7 @@ GIT
         git push origin --tags      # 推送本地的所有标签
         git push origin --all       # 推送本地的所有分支
         git push -u origin develop  # 在远程创建一个新分支develop
+        git push -u origin master -f # 强制推送，可以解决"hint: Updates were rejected because the tip of your current branch is behind"问题
 
     其他
     ====

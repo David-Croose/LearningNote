@@ -1,5 +1,11 @@
 GIT
 ====
+    git log
+    ========
+        git log --oneline   # 每个提交只显示一行
+        git log -n          # 查看最近n个提交
+        git log --stat      # 每个提交显示修改的文件以及增删行数
+
     子模块
     ======
         添加子模块：

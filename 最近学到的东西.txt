@@ -5,6 +5,7 @@ GIT
         git log --oneline   # 每个提交只显示一行
         git log -n          # 查看最近n个提交
         git log --stat      # 每个提交显示修改的文件以及增删行数
+        git log --graph [--all]     # 用ascii字符显示分支树。--all是显示所有分支
 
     子模块
     ======

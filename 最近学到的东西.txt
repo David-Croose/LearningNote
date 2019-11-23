@@ -1,3 +1,11 @@
+FreeRTOS
+=========
+    以下内容全部基于ARM Cotex-M系统
+    * MCU的NVIC分组必须是第4组，这意味着所有中断的preemption priority是[0, 15]，sub priority恒为0
+    * LIBRARY_LOWEST_INTERRUPT_PRIORITY
+    * LIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY是调用FreeRTOS中断API的中断最大优先级。换句话说，所有调用FreeRTOS中断API的中断的优先级都必须大于等于这个值
+
+
 GIT
 ====
     git log

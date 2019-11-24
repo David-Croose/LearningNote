@@ -2,7 +2,6 @@ FreeRTOS
 =========
     以下内容全部基于ARM Cotex-M系统
     * MCU的NVIC分组必须是第4组，这意味着所有中断的preemption priority是[0, 15]，sub priority恒为0
-    * LIBRARY_LOWEST_INTERRUPT_PRIORITY
     * LIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY是调用FreeRTOS中断API的中断最大优先级。换句话说，所有调用FreeRTOS中断API的中断的优先级都必须大于等于这个值
 
 
@@ -534,10 +533,18 @@ STM32HAL库
 
 Keil MDK
 ========
+    重写函数
+    =======
+        int $Sub$$main(void)
+        {
+            __nop();
+            $Super$$main();
+        }
+        
+        知识点：
+            * 上面的代码中，$Sub$${函数名}是重写一个函数的意思，$Super$${函数名}是原来的函数的意思（你如果想调用以前的函数就必须得加这个开头$Super$$）。不止于main函数，什么函数都可以这样
+            * 利用这个功能，你可以在main函数之前做点其他的代码，比如初始化
 
-    优化选项
-    ========
-        当前MDK(5.26)共有4个优化选项：O0, O1, O2, O3，千万别用O0，有问题的
 
     怎样重定向printf
     ===============
@@ -553,7 +560,7 @@ Keil MDK
 
         2. USE Micro Lib
         ================
-            具体略
+            点击魔术棒，找到这项勾上
 
 
 GCC
